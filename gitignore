@@ -21,4 +21,5 @@ ehthumbs.db
 .Trashes
 
 # Compiled Python files
-*.pyc
+*.py
+

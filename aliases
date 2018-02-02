@@ -84,9 +84,11 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 # cleanup
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
-alias start-postgres="docker run --rm -P -p 5432:5432 --name pg_test eg_postgresql"
-alias start-mysql="docker run --rm -P -p 3306:3306 --name my_test -e MYSQL_ROOT_PASSWORD=docker mysql"
+alias start-postgres="sudo docker run --rm -P -p 5432:5432 --name postgresql postgresql"
+alias start-restore="pg_restore --host localhost --port 5432 --username 'docker' --dbname 'postgres' --role 'postgres' --verbose '/home/bruno/dump'"
+alias start-mysql="sudo docker run --rm -P -p 3306:3306 --name my_test -e MYSQL_ROOT_PASSWORD=docker mysql"
 alias start-mongodb="docker run --rm -P -p 27017:27017 --name mongo_test eg_mongodb"
+alias start-redis="sudo docker run -p 6379:6379 --name some-redis -d redis redis-server --appendonly yes"
 
 # postgresql
 alias psql-king-sandbox="psql -h 172.22.15.254 -p 5432 -U openfire -d openfire"
